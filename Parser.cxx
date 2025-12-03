@@ -133,7 +133,6 @@ void parse(std::string name, std::vector<std::pair<char, int>>& output)  {
 void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>& output)  {
   std::string input;
   parse(name, input);
-  // Inputs are on a single line in the format "num-num,num-num,..."
   std::regex regex("(\\d+)-(\\d+)");
   auto it = std::sregex_iterator(input.begin(), input.end(), regex);
   while (it != std::sregex_iterator()) {

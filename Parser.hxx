@@ -16,10 +16,12 @@ void parse(std::string name, std::vector<int64_t>&);
 
 void parse(std::string name, std::vector<std::vector<size_t>>&);
 
+// Inputs are single digit characters without separators on multiple lines
 void parse(std::string name, std::vector<std::vector<char>>&);
 
 void parse(std::string name, std::vector<std::string>&);
 
 void parse(std::string name, std::vector<std::pair<char, int>>&);
 
+// Inputs are on a single line in the format "num-num,num-num,..."
 void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>&);
