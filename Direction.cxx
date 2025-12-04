@@ -3,6 +3,8 @@
 
 const Position Direction::DIRECTIONS[4] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
 
+const Position Direction::SURROUNDING[8] = {{0, -1}, {1, -1}, {1, 0}, {1, 1}, {0, 1}, {-1, 1}, {-1, 0}, {-1, -1}};
+
 const std::map<Position, Direction::Type> Direction::REVERSE_DIRECTIONS = {
     {{0, -1}, UP}, {{1, 0}, RIGHT}, {{0, 1}, DOWN}, {{-1, 0}, LEFT}};
 
