@@ -1,5 +1,5 @@
-#include "precompiled.hxx"
 #include "Parser.hxx"
+#include "precompiled.hxx"
 
 void parse(std::string name, std::string& output) {
   std::filesystem::path inputDir(INPUTS_DIR);
@@ -114,7 +114,7 @@ void parse(std::string name, std::vector<std::string>& output) {
   }
 }
 
-void parse(std::string name, std::vector<std::pair<char, int>>& output)  {
+void parse(std::string name, std::vector<std::pair<char, int>>& output) {
   std::string input;
   parse(name, input);
   std::stringstream ss(input);
@@ -130,7 +130,7 @@ void parse(std::string name, std::vector<std::pair<char, int>>& output)  {
   }
 }
 
-void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>& output)  {
+void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>& output) {
   std::string input;
   parse(name, input);
   std::regex regex("(\\d+)-(\\d+)");
@@ -140,5 +140,34 @@ void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>& output)  
     int64_t second = std::stoll((*it)[2].str());
     output.push_back({first, second});
     ++it;
+  }
+}
+
+void parse(std::string name, std::pair<std::vector<std::pair<int64_t, int64_t>>, std::vector<int64_t>>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::string line;
+  bool parsingFirstBlock = true;
+  std::regex pairRegex("(\\d+)-(\\d+)");
+  while (std::getline(ss, line, '\n')) {
+    if (line.empty()) {
+      parsingFirstBlock = false;
+      continue;
+    }
+    if (parsingFirstBlock) {
+      std::smatch match;
+      if (std::regex_match(line, match, pairRegex)) {
+        int64_t first = std::stoll(match[1].str());
+        int64_t second = std::stoll(match[2].str());
+        output.first.push_back({first, second});
+      }
+    } else {
+      std::stringstream lineStream(line);
+      std::string numberStr;
+      while (std::getline(lineStream, numberStr, ',')) {
+        output.second.push_back(std::stoll(numberStr));
+      }
+    }
   }
 }
