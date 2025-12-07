@@ -1,5 +1,6 @@
-#include "Direction.hxx"
 #include "precompiled.hxx"
+
+#include "Direction.hxx"
 
 const Position Direction::DIRECTIONS[4] = {{0, -1}, {1, 0}, {0, 1}, {-1, 0}};
 

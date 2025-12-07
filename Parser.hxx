@@ -28,3 +28,4 @@ void parse(std::string name, std::vector<std::pair<int64_t, int64_t>>&);
 
 // Inputs are on in 2 blocks, first block is a multi-line list of num-num, second line is just a list of numbers
 void parse(std::string name, std::pair<std::vector<std::pair<int64_t, int64_t>>, std::vector<int64_t>>&);
+

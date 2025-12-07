@@ -1,5 +1,6 @@
-#include "Position.hxx"
 #include "precompiled.hxx"
+
+#include "Position.hxx"
 
 bool Position::operator==(const Position& other) const {
   return x == other.x && y == other.y;

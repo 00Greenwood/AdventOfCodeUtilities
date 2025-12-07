@@ -1,5 +1,6 @@
-#include "Parser.hxx"
 #include "precompiled.hxx"
+
+#include "Parser.hxx"
 
 void parse(std::string name, std::string& output) {
   std::filesystem::path inputDir(INPUTS_DIR);
