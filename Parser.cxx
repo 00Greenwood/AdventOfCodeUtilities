@@ -172,3 +172,20 @@ void parse(std::string name, std::pair<std::vector<std::pair<int64_t, int64_t>>,
     }
   }
 }
+
+void parse(std::string name, std::vector<Position3D>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::string line;
+  std::regex lineRegex("(-*\\d+),(-*\\d+),(-*\\d+)");
+  while (std::getline(ss, line, '\n')) {
+    std::smatch match;
+    if (std::regex_match(line, match, lineRegex)) {
+      long double x = std::stold(match[1].str());
+      long double y = std::stold(match[2].str());
+      long double z = std::stold(match[3].str());
+      output.push_back(Position3D{x, y, z});
+    }
+  }
+}
