@@ -189,3 +189,19 @@ void parse(std::string name, std::vector<Position3D>& output) {
     }
   }
 }
+
+void parse(std::string name, std::vector<Position>& output) {
+  std::string input;
+  parse(name, input);
+  std::stringstream ss(input);
+  std::string line;
+  std::regex lineRegex("(-*\\d+),(-*\\d+)");
+  while (std::getline(ss, line, '\n')) {
+    std::smatch match;
+    if (std::regex_match(line, match, lineRegex)) {
+      int x = std::stoi(match[1].str());
+      int y = std::stoi(match[2].str());
+      output.push_back(Position{x, y});
+    }
+  }
+}

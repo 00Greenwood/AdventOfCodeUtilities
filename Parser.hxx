@@ -1,5 +1,6 @@
 #pragma once
 
+#include "Position.hxx"
 #include "Position3D.hxx"
 
 void parse(std::string name, std::string&);
@@ -34,3 +35,5 @@ void parse(std::string name, std::pair<std::vector<std::pair<int64_t, int64_t>>,
 // Inputs are 3D positions in the format "x,y,z" on multiple lines
 void parse(std::string name, std::vector<Position3D>&);
 
+// Inputs are 3D positions in the format "x,y" on multiple lines
+void parse(std::string name, std::vector<Position>&);
